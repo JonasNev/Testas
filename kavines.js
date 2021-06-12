@@ -8,7 +8,7 @@ data = [{
             {
                 ledai: 2.5,
                 vegetariska: 'taip',
-            },
+            }, 
             {
                 sriuba: 1.2,
                 vegetariska: 'ne',
