@@ -1,2 +1,2 @@
-# Sveikas Nagli ir Jauniau <3
+# Sveiki Nagli ir Jauniau <3
  

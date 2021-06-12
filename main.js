@@ -5,16 +5,24 @@ Visas funkcijas iškvieskite vieną po kitos, žemiau šio komentaro.
 
 Taip pat parašykite funkciją kuri: isikviesdama save pačią atspausdina skaičius nuo 1 iki 10
 
+
+
 */
 
+//Rekursija
 
 
 
-
+console.log("Rekursijos užduotis")
+rekursija(10);
+console.log("kiek yra kavinių?")
 kaviniuSkaiciuokle();
+console.log("kiek yra kavinių yra Kaune?")
 kaunoKavines();
+console.log("Kiek pirmoje kavineje yra patiekalu?")
 patiekaluSkaiciuokle();
-
+console.log("kiek skirtingų patiekalų yra Kauno filialuose?")
+visuPatiekaluSkaiciuokle();
 
 let keys = Object.keys(data);
 
@@ -55,3 +63,24 @@ function patiekaluSkaiciuokle() {
 
 // kiek skirtingų patiekalų yra Kauno filialuose?
 
+function checkIfArrayHasValue(params) {
+
+}
+
+
+function visuPatiekaluSkaiciuokle() {
+Object.keys(data).forEach((key) => {
+    console.log(data[key])
+})
+}
+
+var mapping = data.map()
+
+
+// Rekursija
+function rekursija(counter) {
+    if (counter > 0) {
+        rekursija(counter - 1);
+    }
+    console.log(counter);
+}
