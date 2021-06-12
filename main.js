@@ -22,7 +22,7 @@ kaunoKavines();
 console.log("Kiek pirmoje kavineje yra patiekalu?")
 patiekaluSkaiciuokle();
 console.log("kiek skirtingų patiekalų yra Kauno filialuose?")
-visuPatiekaluSkaiciuokle();
+// visuPatiekaluSkaiciuokle();
 
 let keys = Object.keys(data);
 
@@ -63,18 +63,26 @@ function patiekaluSkaiciuokle() {
 
 // kiek skirtingų patiekalų yra Kauno filialuose?
 
-function checkIfArrayHasValue(params) {
-
+hasDuplicates();
+function hasDuplicates(data) {
+    let pirmas = Object.keys(data[1].menu)
+    var valuesSoFar = Object.create(null);
+    for (var i = 0; i < Object.keys(pirmas).length; ++i) {
+        var value = pirmas[i];
+        if (value in valuesSoFar) {
+            return true;
+        }
+        valuesSoFar[value] = true;
+    }
+    return false;
 }
 
-
-function visuPatiekaluSkaiciuokle() {
-Object.keys(data).forEach((key) => {
-    console.log(data[key])
-})
-}
-
-var mapping = data.map()
+// function visuPatiekaluSkaiciuokle() {
+// Object.keys(data).forEach((key) => {
+//     console.log(data[key])
+// })
+// }
+// var mapping = data.map()
 
 
 // Rekursija
