@@ -68,7 +68,7 @@ data = [{
     },
     {
         kavine: 'cili niekam nežinoma',
-        adresas: 'Vaišganto g, Kaunas',
+        adresas: 'Vaišganto g, kaunas',
         menu: [{
                 kebabai: 6.5,
                 vegetariska: 'ne',

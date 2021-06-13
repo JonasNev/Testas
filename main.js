@@ -1,97 +1,3 @@
-// /* 
-// Kiekviena užduotis turi būti aprašyta kaip atskira funkcija
-// kuriai yra paduodami duomenys. Aprašykite visas funkcijas žemiau. 
-// Visas funkcijas iškvieskite vieną po kitos, žemiau šio komentaro.
-
-// Taip pat parašykite funkciją kuri: isikviesdama save pačią atspausdina skaičius nuo 1 iki 10
-
-
-
-// */
-
-// //Rekursija
-
-
-
-// console.log("Rekursijos užduotis")
-// // rekursija(10);
-// console.log("kiek yra kavinių?")
-// kaviniuSkaiciuokle();
-// console.log("kiek yra kavinių yra Kaune?")
-// kaunoKavines();
-// console.log("Kiek pirmoje kavineje yra patiekalu?")
-// patiekaluSkaiciuokle();
-// console.log("kiek skirtingų patiekalų yra Kauno filialuose?")
-// // visuPatiekaluSkaiciuokle();
-
-// let keys = Object.keys(data);
-
-// //kiek yra kavinių?
-// function kaviniuSkaiciuokle() {
-//     let kaviniuSkaicius = 0;
-//     for (let index = 0; index < Object.keys(data).length; index++) {
-//         kaviniuSkaicius++;
-//     }
-//     console.log(kaviniuSkaicius)
-// }
-// // console.log(data[1].kavine)
-
-// //kiek yra kavinių yra Kaune?
-
-// function kaunoKavines() {
-//     kaunoSkaicius = 0;
-//     for (let index = 0; index < Object.keys(data).length; index++) {
-//         if (data[index].adresas.includes('Kaunas')) {
-//             kaunoSkaicius++;
-//         }
-
-//     }
-//     console.log(kaunoSkaicius)
-// }
-
-// //Kiek pirmoje kavineje yra patiekalu?
-
-// function countkavines(data){
-//     console.log(data.length)
-// }
-
-// function patiekaluSkaiciuokle() {
-//     let pirmas = Object.keys(data[1].menu)
-//     pirmoPatiekalai = 0;
-//     for (let index = 0; index < Object.keys(pirmas).length; index++) {
-//         pirmoPatiekalai++;
-//     }
-//     console.log(pirmoPatiekalai)
-// }
-
-// // kiek skirtingų patiekalų yra Kauno filialuose?
-
-
-// // function visuPatiekaluSkaiciuokle() {
-// // Object.keys(data).forEach((key) => {
-// //     console.log(data[key])
-// // })
-// // }
-// // var mapping = data.map()
-
-
-// // Rekursija
-// // function rekursija(counter) {
-// //     if (counter > 0) {
-// //         rekursija(counter - 1);
-// //     }
-// //     console.log(counter);
-// // }
-
-
-//Destytojo variantai mano naujas bandytas
-countKavines(data);
-
-function countKavines(data) {
-    console.log("Kaviniu skaicius " + data.length)
-}
-
-
 
 // Užduotys
 
@@ -103,3 +9,148 @@ function countKavines(data) {
 // 6. Ar vidudinė patiekalų kaina Kauno filialuose aukštesnė už vidutinę patiekalų kainą kituose filialuose?
 // 7. Kiek procentų patiekalų yra vegetariški? (visame tinkle 2 sk po kablelio)
 // 8. Ar Vilniuje procentaliai daugiau vegetariškų patiekalų nei kituose miestuose?
+ParodoKiekYraKaviniu(data);
+KiekYraKaviniuKaune(data);
+SuskaiciuojaKiekYraPatiekaluPirmojeKavineje(data);
+KiekSkirtinguPatiekaluYraKaunoFilialuose(data);
+VisuPatiekaluKainuVidurkioSkaiciavimas(data);
+ArVidutineKainaKauneAukstesneUzKituFilialu(data);
+KiekProcentuPatiekaluYraVegetariski(data);
+ArVilniujeDaugiauVegetariskuPatiekaluNeiKituoseMiestuose(data);
+
+
+function ParodoKiekYraKaviniu() {
+    console.log("Kavinių skaičius yra " + data.length)
+}
+
+function KiekYraKaviniuKaune(data) {
+    let kaunoKavines = 0;
+    for (let index = 0; index < data.length; index++) {
+        if (data[index].adresas.toLowerCase().includes("kaunas")) {
+            kaunoKavines++;
+        }
+
+    }
+    console.log("Kavinių skaičius kaune yra " + kaunoKavines)
+}
+
+function SuskaiciuojaKiekYraPatiekaluPirmojeKavineje() {
+    let pirmaKavine = data[0].menu;
+    let patiekaluSkaicius = 0;
+    for (let index = 0; index < pirmaKavine.length; index++) {
+        patiekaluSkaicius++;
+    }
+    console.log("Patiekalų skaičius pirmoje kavinėje yra " + patiekaluSkaicius)
+}
+
+function KiekSkirtinguPatiekaluYraKaunoFilialuose() {
+    var skirtingiPatiekai = [];
+    let patiekaluSkaicius = 0;
+    data.forEach(kavine => {
+        if (kavine.adresas.toLowerCase().includes("kaunas")) {
+            kavine.menu.forEach(patiekalas => {
+                if (skirtingiPatiekai.includes(Object.keys(patiekalas)[0])) {
+                    patiekaluSkaicius++;
+                } else {
+                    skirtingiPatiekai.push(Object.keys(patiekalas)[0]);
+                }
+            });
+        }
+    });
+    console.log("Patiekalų skaičius Kauno filialuose yra " + skirtingiPatiekai.length)
+}
+
+function VisuPatiekaluKainuVidurkioSkaiciavimas() {
+    let kaina = 0;
+    let count = 0;
+    data.forEach(kavine => {
+        kavine.menu.forEach(patiekalas => {
+            kaina += Object.values(patiekalas)[0];
+            count++;
+        });
+    });
+    let vidurkis = kaina / count;
+    vidurkis = vidurkis.toFixed(2);
+    console.log("Vidutinė patiekalų kaina tinkle yra " + vidurkis)
+}
+
+function ArVidutineKainaKauneAukstesneUzKituFilialu() {
+    let kaunoKaina = 0;
+    let kaunoPatiekalai = 0;
+    let kituKaina = 0;
+    let kituPatiekalai = 0
+    data.forEach(kavine => {
+        if (kavine.adresas.toLowerCase().includes("kaunas")) {
+            kavine.menu.forEach(patiekalas => {
+                kaunoKaina += Object.values(patiekalas)[0];
+                kaunoPatiekalai++;
+            });
+        } else {
+            kavine.menu.forEach(patiekalas => {
+                kituKaina += Object.values(patiekalas)[0];
+                kituPatiekalai++;
+            });
+        }
+    });
+    let kaunoVidurkis = (kaunoKaina / kaunoPatiekalai).toFixed(2);
+    let kituVidurkis = (kituKaina / kituPatiekalai).toFixed(2);
+    if (kaunoVidurkis > kituVidurkis) {
+        console.log("Kauno patiekalų vidutinė kaina didesnė už kitų filialų")
+    } else {
+        console.log("Kitų filialų vidutinė kaina didesnė už Kauno")
+    }
+}
+
+function KiekProcentuPatiekaluYraVegetariski() {
+    let vegetariskiPatiekalai = 0;
+    let neVegetariskiPatiekalai = 0;
+    data.forEach(kavine => {
+        kavine.menu.forEach(patiekalas => {
+            if (Object.values(patiekalas)[1] == 'taip') {
+                vegetariskiPatiekalai++;
+            } else {
+                neVegetariskiPatiekalai++;
+            }
+        });
+    });
+    let visiPatiekalai = neVegetariskiPatiekalai + vegetariskiPatiekalai;
+    let vegetariskuProcentas = ((vegetariskiPatiekalai / visiPatiekalai) * 100).toFixed(2);
+    console.log("Iš visų patiekalų, vegetariškų patiekalų procentas yra " + vegetariskuProcentas)
+}
+
+function ArVilniujeDaugiauVegetariskuPatiekaluNeiKituoseMiestuose() {
+    let vegetariskiVilniausPatiekalai = 0;
+    let neVegetariskiPatiekalai = 0;
+    let visiVegetariski = 0;
+    data.forEach(kavine => {
+        if (kavine.adresas.includes("Vilnius")) {
+            kavine.menu.forEach(patiekalas => {
+                if (Object.values(patiekalas)[1] == 'taip' ) {
+                    vegetariskiVilniausPatiekalai++;
+                    visiVegetariski++;
+                }
+            });
+        }else{
+            kavine.menu.forEach(patiekalas => {
+                if (Object.values(patiekalas)[1] == 'taip') {
+                    neVegetariskiPatiekalai++;
+                    visiVegetariski++;
+                }
+            });
+        }
+    });
+    let vilniusProcentas = ((vegetariskiVilniausPatiekalai/visiVegetariski) *100).toFixed(2)
+    let kitiProcentas = ((neVegetariskiPatiekalai/visiVegetariski) *100).toFixed(2)
+    if (vilniusProcentas > kitiProcentas) {
+        console.log("Vilniuje didesnis procentas vegetariškų patiekalų")
+    }else{
+        console.log("Kituose miestuose didesnis procentas vegetariškų patiekalų")
+    }
+
+}
+
+// kavine.menu.forEach(patiekalas => {
+//     if (Object.values(patiekalas)[1] == 'taip') {
+//         neVegetariskiPatiekalai++
+//     }
+// });
